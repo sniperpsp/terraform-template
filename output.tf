@@ -1,3 +1,5 @@
+#Saidas que vão ser apresentadas
+
 output "instance_name"{
     value = aws_instance.ec2_tf.tags
 }

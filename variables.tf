@@ -1,3 +1,5 @@
+#Aqui temos as variaveis que estou utilizando, você pode criar mais variaveis para facilitar no script.
+
 variable "tag_name" {
   description = "Nome da instancia"
   type        = string
@@ -29,7 +31,7 @@ variable "instance_type_ec2"{
 
 variable "meu_ip" {
   description = "Meu endereço IP atual"
-  default     = "45.228.245.0"  # Substitua pelo seu endereço IP atual
+  default     = "45.228.245.0"  # Substitua pelo seu endereço IP atual para ser liberado a fazer ssh na maquina
 }
 
 variable "sg1" {

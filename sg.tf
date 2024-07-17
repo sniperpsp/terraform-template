@@ -1,4 +1,4 @@
-// SG.tf
+#Criação do Security Groupe para a EC2 =)
 
 resource "aws_security_group" "SG1" {
   name        = "${var.sg1}-EC2"
