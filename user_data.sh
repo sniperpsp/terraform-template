@@ -10,6 +10,7 @@ sudo yum update -y
 sudo yum install httpd unzip -y
 sudo systemctl start httpd
 sudo systemctl enable httpd
+curl -L -o /tmp/Website.zip https://github.com/sniperpsp/terraform-template/raw/main/Website.zip
 sudo unzip /tmp/Website.zip -d /tmp
 sudo mv /tmp/Site/* /var/www/html/
 sudo chown -R apache:apache /var/www/html
