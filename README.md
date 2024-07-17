@@ -1,6 +1,6 @@
 # Terraform AWS EC2 Template
 
-Este projeto utiliza Terraform para provisionar uma infraestrutura na AWS, incluindo VPC, subnets, security groups, instâncias EC2 e mais. Abaixo está uma descrição detalhada dos arquivos e suas funcionalidades.
+Este projeto utiliza Terraform para provisionar uma infraestrutura na AWS, incluindo VPC, subnets, security groups, instâncias EC2 e um Application Load Balancer (ALB). Abaixo está uma descrição detalhada dos arquivos e suas funcionalidades.
 
 ## Arquivos e Funcionalidades
 
@@ -22,6 +22,9 @@ Script de inicialização para a instância EC2. Configura um usuário, habilita
 ### `sg.tf`
 Cria um Security Group para a instância EC2, permitindo tráfego HTTP e SSH.
 
+### `alb.tf`
+Configura um Application Load Balancer (ALB) para distribuir o tráfego HTTP para a instância EC2.
+
 ### `output.tf`
 Define as saídas que serão exibidas após a execução do Terraform, como IPs públicos e privados da instância EC2 e detalhes do Security Group.
 
@@ -38,8 +41,8 @@ Provisiona uma instância EC2 com as configurações definidas, incluindo AMI, t
 
 1. **Clone o repositório:**
    ```sh
-   git clone https://github.com/sniperpsp/terraform-template.git
-   cd terraform-template
+   git clone https://github.com/seu-usuario/terraform-aws-ec2-template.git
+   cd terraform-aws-ec2-template
    ```
 
 2. **Configure suas credenciais AWS:**
@@ -64,6 +67,7 @@ Provisiona uma instância EC2 com as configurações definidas, incluindo AMI, t
    ```
 
 ## Estrutura do Projeto
+
 ```	
 pasta_Clonada/
 ├── variables.tf
@@ -76,6 +80,7 @@ pasta_Clonada/
 ├── main.tf
 ├── iam.tf
 └── ec2.tf
+├── alb.tf
 └── Website.zip
 ```	
 
