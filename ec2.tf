@@ -8,7 +8,6 @@ resource "aws_instance" "ec2_tf" {
   instance_type                = var.instance_type_ec2
   associate_public_ip_address  = true
   disable_api_termination      = true
-  key_name                     = "keylinux"
   subnet_id                    = aws_subnet.subnet1.id
   security_groups              = [aws_security_group.SG1.id]
   user_data                    = file("user_data.sh")
