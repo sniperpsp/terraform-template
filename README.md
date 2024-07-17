@@ -41,9 +41,8 @@ Provisiona uma instância EC2 com as configurações definidas, incluindo AMI, t
 
 1. **Clone o repositório:**
    ```sh
-   git clone https://github.com/seu-usuario/terraform-aws-ec2-template.git
-   cd terraform-aws-ec2-template
-   ```
+   git clone https://github.com/sniperpsp/terraform-template
+   cd terraform-template  #ou a pasta que vc der o nome
 
 2. **Configure suas credenciais AWS:**
    Certifique-se de que suas credenciais AWS estão configuradas corretamente usando `aws configure`.
