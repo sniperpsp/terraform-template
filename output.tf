@@ -16,6 +16,6 @@ output "SG" {
   value = aws_security_group.SG1
 }
 
-output "route_table_tf" {
-    value = aws_route.default_route
+output "alb" {
+    value = aws_lb.app_lb.dns_name
 }
