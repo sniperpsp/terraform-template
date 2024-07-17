@@ -24,7 +24,7 @@ variable "ami" {
 }
 
 variable "instance_type_ec2"{
-  description = "Tipod a instancia usada"
+  description = "Tipo da instancia usada"
   type = string
   default = "t3.micro"
 }
