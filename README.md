@@ -15,6 +15,13 @@ Este módulo do Terraform provisiona uma infraestrutura na AWS, incluindo VPC, s
 - `main.tf`: Especifica a versão do Terraform e o provedor AWS.
 - `iam.tf`: Configura uma role IAM.
 - `ec2.tf`: Provisiona uma instância EC2.
+- `auto_scaling.tf`: Provisiona um Auto Scaling.
+- `website.zip`: Arquivo de contedo estático para o site.
+- `ecs.tf`: Provisiona um Cluster ECS.
+- `launch_template.tf`: Provisiona uma launch template.
+- `rds.tf`: Provisiona um RDS.
+
+
 
 ## Uso
 
