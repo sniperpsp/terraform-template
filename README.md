@@ -1,48 +1,64 @@
 # Terraform AWS EC2 Template
 
-Este projeto utiliza Terraform para provisionar uma infraestrutura na AWS, incluindo VPC, subnets, security groups, instâncias EC2 e um Application Load Balancer (ALB). Abaixo está uma descrição detalhada dos arquivos e suas funcionalidades.
+Este módulo do Terraform provisiona uma infraestrutura na AWS, incluindo VPC, subnets, security groups, instâncias EC2 e um Application Load Balancer (ALB).
 
-## Arquivos e Funcionalidades
+## Recursos
 
-### `variables.tf`
-Define variáveis reutilizáveis para o projeto, como nomes de tags, ID da AMI, tipo de instância, IP do usuário e nome do Security Group.
+- `variables.tf`: Define variáveis reutilizáveis para o projeto.
+- `vpc.tf`: Cria uma nova VPC e um Internet Gateway.
+- `subnet.tf`: Cria uma subnet dentro da VPC.
+- `state_config.tf`: Configura o backend do Terraform.
+- `user_data.sh`: Script de inicialização para a instância EC2.
+- `sg.tf`: Cria um Security Group para a instância EC2.
+- `alb.tf`: Configura um Application Load Balancer (ALB).
+- `output.tf`: Define as saídas após a execução do Terraform.
+- `main.tf`: Especifica a versão do Terraform e o provedor AWS.
+- `iam.tf`: Configura uma role IAM.
+- `ec2.tf`: Provisiona uma instância EC2.
 
-### `vpc.tf`
-Cria uma nova VPC e um Internet Gateway, além de configurar a tabela de rotas para permitir tráfego de saída.
+## Uso
 
-### `subnet.tf`
-Cria uma subnet dentro da VPC e associa a tabela de rotas principal à subnet.
+```hcl
+module "ec2_template" {
+  source = "github.com/sniperpsp/terraform-template"
 
-### `state_config.tf`
-Configura o backend do Terraform para armazenar o estado localmente. Há uma configuração comentada para usar o S3 como backend.
+  # Defina as variáveis necessárias
+  ami_id           = "ami-12345678"
+  instance_type    = "t2.micro"
+  vpc_id           = "vpc-12345678"
+  subnet_id        = "subnet-12345678"
+  security_group_id = "sg-12345678"
+  # Adicione outras variáveis conforme necessário
+}
+```
 
-### `user_data.sh`
-Script de inicialização para a instância EC2. Configura um usuário, habilita login via senha, instala Apache, baixa e configura um site.
+## Inputs
 
-### `sg.tf`
-Cria um Security Group para a instância EC2, permitindo tráfego HTTP e SSH.
+| Nome                | Descrição                                      | Tipo   | Default       | Obrigatório |
+|---------------------|------------------------------------------------|--------|---------------|-------------|
+| `ami_id`            | ID da AMI para a instância EC2                 | string | n/a           | sim         |
+| `instance_type`     | Tipo da instância EC2                          | string | `"t2.micro"`  | não         |
+| `vpc_id`            | ID da VPC                                      | string | n/a           | sim         |
+| `subnet_id`         | ID da Subnet                                   | string | n/a           | sim         |
+| `security_group_id` | ID do Security Group                           | string | n/a           | sim         |
+| `user_data`         | Script de inicialização para a instância EC2 | string | ""             | não         |
+| `iam_role`          | Nome da role IAM para a instância EC2       | string | ""             | não         |
 
-### `alb.tf`
-Configura um Application Load Balancer (ALB) para distribuir o tráfego HTTP para a instância EC2.
+## Outputs
 
-### `output.tf`
-Define as saídas que serão exibidas após a execução do Terraform, como IPs públicos e privados da instância EC2 e detalhes do Security Group.
-
-### `main.tf`
-Especifica a versão do Terraform e o provedor AWS a ser utilizado.
-
-### `iam.tf`
-Configura uma role IAM para permitir acesso ao SSM (AWS Systems Manager) pela instância EC2.
-
-### `ec2.tf`
-Provisiona uma instância EC2 com as configurações definidas, incluindo AMI, tipo de instância, subnet, security group, script de inicialização e perfil IAM.
+| Nome                | Descrição                                      |
+|---------------------|------------------------------------------------|
+| `instance_id`       | ID da instância EC2                            |
+| `public_ip`         | IP público da instância EC2                    |
+| `security_group_id` | ID do Security Group                           |
 
 ## Como Usar
 
 1. **Clone o repositório:**
    ```sh
    git clone https://github.com/sniperpsp/terraform-template
-   cd terraform-template  #ou a pasta que vc der o nome
+   cd terraform-template
+   ```
 
 2. **Configure suas credenciais AWS:**
    Certifique-se de que suas credenciais AWS estão configuradas corretamente usando `aws configure`.
@@ -81,7 +97,7 @@ pasta_Clonada/
 └── ec2.tf
 ├── alb.tf
 └── Website.zip
-```	
+```
 
 ## Contribuição
 
