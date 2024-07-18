@@ -2,6 +2,9 @@
 
 resource "aws_vpc" "vpc2" {
   cidr_block = "172.0.0.0/16"
+
+  enable_dns_support   = true #Habilitando suporte a dns para user no rds
+  enable_dns_hostnames = true #Habilitando suporte a dns para user no rds
   # Outros parâmetros do VPC podem ser adicionados aqui
   tags = {
     Name = var.tag_name

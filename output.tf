@@ -1,7 +1,10 @@
 #Saidas que vão ser apresentadas
 
-output "instance_name"{
-    value = aws_instance.ec2_tf.tags
+output "instance_dns"{
+    value = aws_instance.ec2_tf.public_dns
+}
+output "instance_rds_dns"{
+    value = aws_db_instance.bia.endpoint
 }
 
 output "public_ip" {
@@ -12,10 +15,9 @@ output "private_ip" {
     value = aws_instance.ec2_tf.private_ip
 }
 
-output "SG" {
-  value = aws_security_group.SG1
+output "rds" {
+  value = aws_db_instance.bia.id
 }
-
-output "alb" {
-    value = aws_lb.app_lb.dns_name
+output "rds_user" {
+      value = aws_db_instance.bia.username  
 }
