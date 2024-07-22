@@ -21,3 +21,7 @@ output "rds" {
 output "rds_user" {
       value = aws_db_instance.bia.username  
 }
+
+output "bia_repo_url" {
+  value = aws_ecr_repository.bia.repository_url
+}
