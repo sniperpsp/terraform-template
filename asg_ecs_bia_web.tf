@@ -13,6 +13,10 @@ launch_template {
   version = "$Latest"
 }
 
+lifecycle {
+  ignore_changes = [desired_capacity]
+}
+
 tag{
     key = "Name"
     value = "cluster-bia-tf"

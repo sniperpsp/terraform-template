@@ -30,3 +30,8 @@ output "rds_secret_name" {
   description = "Secret RDS"
   value       = data.aws_secretsmanager_secret.biaDB.name
 }
+
+# output "rdds-secret" {
+#   value = tolist(aws_db_instance.bia.master_user_secret)[0].secret_arn
+  
+# }
