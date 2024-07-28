@@ -22,7 +22,8 @@ resource "aws_db_instance" "bia" {
   network_type                          = "IPV4"
   option_group_name                     = "default:postgres-16"
   parameter_group_name                  = "liberacao"
-  password                              = "postgres"  # Senha definida
+  password                              = null  # Senha definida
+  manage_master_user_password           = true
   performance_insights_enabled          = false
   port                                  = 5432
   publicly_accessible                   = true

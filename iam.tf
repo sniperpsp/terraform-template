@@ -27,8 +27,3 @@ resource "aws_iam_instance_profile" "role_acesso_ssm_instance_profile" {
 #  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 #}
 #
-## Aqui eu atrelei uma role que eu ja tinha em minha conta ao servidor criado
-#resource "aws_iam_instance_profile" "role_acesso_ssm_instance_profile" {
-#  name = "role-acesso-ssm-instance-profile"
-#  role = aws_iam_role.role_acesso_ssm.name
-#}

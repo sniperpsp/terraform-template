@@ -23,4 +23,11 @@ resource "aws_instance" "ec2_tf" {
     App      = var.tag_app     #tags para o serviço do ec2 e ebs
     Servico  = var.tag_servico
   }
+
+  lifecycle {
+    ignore_changes = [  ami,
+      instance_type,
+      security_groups,
+      vpc_security_group_ids,]
+  }
 }

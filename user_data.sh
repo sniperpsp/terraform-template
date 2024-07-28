@@ -10,6 +10,9 @@ sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/ssh
 sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config #habilitando acesso com senha via ssh
 sed -i 's/^#PermitEmptyPasswords no/PermitEmptyPasswords no/' /etc/ssh/sshd_config #habilitando acesso com senha via ssh
 sed -i 's/^PermitEmptyPasswords yes/PermitEmptyPasswords no/' /etc/ssh/sshd_config #habilitando acesso com senha via ssh
+sed -i 's/^docker tag bia:latest $ECR_REGISTRY/bia-ecr:latest /docker tag bia:latest $ECR_REGISTRY/bia:latest' /home/ec2-user/bia/build.sh
+sed -i 's/^docker push $ECR_REGISTRY/bia-ecr:latest /docker push $ECR_REGISTRY/bia:latest /home/ec2-user/bia/build.sh
+
 
 # Reiniciar o serviço SSH para aplicar as mudanças
 systemctl restart sshd
