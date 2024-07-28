@@ -27,6 +27,14 @@ resource "aws_security_group" "SG1" {
     cidr_blocks = ["${var.meu_ip}/24"]  # Usando a variável meu_ip para o seu IP
   }
 
+    // Permitir que o próprio SG se comunique consigo mesmo
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    self        = true
+  }
+
   // Regras de saída
   egress {
     from_port   = 0
