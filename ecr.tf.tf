@@ -6,4 +6,8 @@ resource "aws_ecr_repository" "bia" {
   image_scanning_configuration {
     scan_on_push = false
   }
+
+  lifecycle {
+    prevent_destroy = true
+}
 }

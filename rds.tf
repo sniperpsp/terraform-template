@@ -49,4 +49,7 @@ resource "aws_db_subnet_group" "bia_subnet_group" {
     App      = "${var.tag_app}-db"     
     Servico  = "${var.tag_servico}-db"
   }
+    lifecycle {
+    prevent_destroy = true
+}
 }

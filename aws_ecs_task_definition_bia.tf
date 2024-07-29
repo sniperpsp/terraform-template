@@ -11,7 +11,7 @@ resource "aws_ecs_task_definition" "bia-web" {
       portMappings = [
         {
           containerPort = 8080
-          hostPort      = 80
+          hostPort      = 0
         }
       ]
       cpu               = 1024
@@ -53,4 +53,7 @@ resource "aws_ecs_task_definition" "bia-web" {
     cpu_architecture        = "X86_64"
     operating_system_family = "LINUX"
   }
+
+    depends_on = [aws_iam_role.ecs_task_role, aws_ecr_repository.bia]
+
 }

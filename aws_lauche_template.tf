@@ -31,7 +31,7 @@ resource "aws_launch_template" "ecs_ec2" {
   }
 
   iam_instance_profile {
-    name = data.aws_iam_instance_profile.ecs_instance_profile.name
+    name = aws_iam_instance_profile.ecs_instance_profile.name
   }
 
   user_data = base64encode(<<EOF

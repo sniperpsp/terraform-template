@@ -28,4 +28,7 @@ tag{
     value = ""
     propagate_at_launch = true
 }
+
+  depends_on = [aws_launch_template.ecs_ec2]
+
 }
