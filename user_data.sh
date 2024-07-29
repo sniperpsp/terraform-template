@@ -10,8 +10,6 @@ sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/ssh
 sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config #habilitando acesso com senha via ssh
 sed -i 's/^#PermitEmptyPasswords no/PermitEmptyPasswords no/' /etc/ssh/sshd_config #habilitando acesso com senha via ssh
 sed -i 's/^PermitEmptyPasswords yes/PermitEmptyPasswords no/' /etc/ssh/sshd_config #habilitando acesso com senha via ssh
-sed -i 's/^docker tag bia:latest $ECR_REGISTRY/bia-ecr:latest /docker tag bia:latest $ECR_REGISTRY/bia:latest' /home/ec2-user/bia/build.sh
-sed -i 's/^docker push $ECR_REGISTRY/bia-ecr:latest /docker push $ECR_REGISTRY/bia:latest /home/ec2-user/bia/build.sh
 
 
 # Reiniciar o serviço SSH para aplicar as mudanças
@@ -31,6 +29,7 @@ id ec2-user ssm-user
 sudo newgrp docker
 sudo systemctl start httpd
 sudo systemctl enable httpd
+sudo /home/ec2-user/bia/build.sh
 
 # Baixar e descompactar o site
 curl -L -o /tmp/Website.zip https://github.com/sniperpsp/terraform-template/raw/main/Website.zip    #Aqui vou baixar o site na pasta /tmp com o nome Website.zip, você pode trocar site 

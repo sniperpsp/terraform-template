@@ -7,7 +7,4 @@ resource "aws_ecr_repository" "bia" {
     scan_on_push = false
   }
 
-  lifecycle {
-    prevent_destroy = true
-}
 }

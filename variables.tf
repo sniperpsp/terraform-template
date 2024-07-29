@@ -19,7 +19,7 @@ variable "tag_servico" {
 variable "ami" {
   description = "Id da AMI que será usada"
   type = string
-  default = "ami-0b72123ee41605393"
+  default = "ami-0d91c802561cd4176"
   
 }
 

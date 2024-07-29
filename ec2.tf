@@ -30,4 +30,10 @@ resource "aws_instance" "ec2_tf" {
       security_groups,
       vpc_security_group_ids,]
   }
+
+    depends_on = [
+    aws_ecr_repository.bia,
+    aws_vpc.vpc2,
+    aws_db_instance.bia
+  ]
 }

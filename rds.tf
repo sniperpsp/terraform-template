@@ -5,6 +5,7 @@ resource "aws_db_instance" "bia" {
   backup_retention_period               = 0  # Desativando backups
   backup_window                         = null
   ca_cert_identifier                    = "rds-ca-2019"
+  snapshot_identifier                   = "db-bia-tabelaok"
   copy_tags_to_snapshot                 = false
   db_subnet_group_name                  = aws_db_subnet_group.bia_subnet_group.name
   delete_automated_backups              = false
@@ -49,7 +50,5 @@ resource "aws_db_subnet_group" "bia_subnet_group" {
     App      = "${var.tag_app}-db"     
     Servico  = "${var.tag_servico}-db"
   }
-    lifecycle {
-    prevent_destroy = true
-}
+
 }
